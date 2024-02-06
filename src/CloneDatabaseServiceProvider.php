@@ -12,6 +12,6 @@ class CloneDatabaseServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('laravel-clone-database-command')
-            ->hasConsoleCommand(DatabaseCloneCommandCommand::class);
+            ->hasCommand(DatabaseCloneCommandCommand::class);
     }
 }
