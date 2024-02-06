@@ -15,38 +15,50 @@ You can install the package via composer:
 composer require rokde/laravel-clone-database-command
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-clone-database-command-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="laravel-clone-database-command-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-clone-database-command-views"
-```
-
 ## Usage
 
-```php
-$laravelCloneDatabaseCommand = new Rokde\LaravelCloneDatabaseCommand();
-echo $laravelCloneDatabaseCommand->echoPhrase('Hello, Rokde!');
+You can use the pre-configured artisan console command:
+
+```bash
+php artisan db:clone
 ```
+
+This assumes that there are the entries `source` and `target` in the database configuration.
+
+Otherwise you can create your own clone command to meet the configurable needs.
+
+All single tasks can be found in the `src/Actions` folder. So you can join it like you want if necessary. 
+
+### Configuration
+
+The whole configuration is stored in a class `DatabaseSyncConfiguration`.
+
+#### source & target connection
+
+The name of the connections and the connection configuration is editable. So if you already have a `target` or `source` connection configured - you can change that name if necessary.
+
+#### chunk size
+
+The chunk size can be configured for a specific table or for any table.
+
+#### limit
+
+The limit of rows can be configured for a specific table or for any table.
+
+#### mutations
+
+A mutation can be configured for a specific table or for any table. So the given column name can be used for any table when existent. So you can replace all `email` columns by a fake email like so:
+
+```php
+$config->addMutation('email', fn() => fake()->email);
+```
+
+#### behaviour
+
+We can decided what to do with the tables already existing on the target: keep it as is, or drop all unhandled tables.
+
+Another option is to delete records before inserting the new ones or should the table be dropped before and the structure should be stored newly.
+
 
 ## Testing
 

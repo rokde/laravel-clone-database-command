@@ -1,17 +1,16 @@
 <?php
 
-namespace Rokde\LaravelCloneDatabaseCommand\Tests;
+namespace Rokde\CloneDatabase\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Rokde\LaravelCloneDatabaseCommand\LaravelCloneDatabaseCommandServiceProvider;
+use Rokde\CloneDatabase\CloneDatabaseServiceProvider;
 
 class TestCase extends Orchestra
 {
     protected function getPackageProviders($app)
     {
         return [
-            LaravelCloneDatabaseCommandServiceProvider::class,
+            CloneDatabaseServiceProvider::class,
         ];
     }
 
