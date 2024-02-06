@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
 
-class DatabaseSyncConfiguration implements Arrayable
+final class DatabaseSyncConfiguration implements Arrayable
 {
     const DROP_TABLES = 'dropTables';
 
@@ -38,7 +38,7 @@ class DatabaseSyncConfiguration implements Arrayable
 
     public static function make(array $config = []): static
     {
-        return new static($config);
+        return new self($config);
     }
 
     public function __construct(array $config)

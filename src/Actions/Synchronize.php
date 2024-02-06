@@ -2,13 +2,13 @@
 
 namespace Rokde\CloneDatabase\Actions;
 
-use Illuminate\Database\ConnectionResolverInterface;
+use Illuminate\Database\DatabaseManager;
 use Rokde\CloneDatabase\Models\DatabaseSyncConfiguration;
 
 readonly class Synchronize
 {
     public function __construct(
-        protected ConnectionResolverInterface $connections,
+        protected DatabaseManager $connections,
         protected DatabaseSyncConfiguration $config
     ) {
 
@@ -16,14 +16,14 @@ readonly class Synchronize
 
     public function __invoke(): void
     {
-        /** @var \Illuminate\Database\Connection|\Illuminate\Database\ConnectionInterface $sourceConnection */
+        /** @var \Illuminate\Database\Connection $sourceConnection */
         $sourceConnection = $this->connections->connectUsing(
             $this->config->sourceConnectionName(),
             $this->config->sourceConnectionConfig(),
             true,
         );
 
-        /** @var \Illuminate\Database\Connection|\Illuminate\Database\ConnectionInterface $targetConnection */
+        /** @var \Illuminate\Database\Connection $targetConnection */
         $targetConnection = $this->connections->connectUsing(
             $this->config->targetConnectionName(),
             $this->config->targetConnectionConfig(),

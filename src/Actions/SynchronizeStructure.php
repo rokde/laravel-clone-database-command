@@ -3,7 +3,7 @@
 namespace Rokde\CloneDatabase\Actions;
 
 use Doctrine\DBAL\Schema\AbstractSchemaManager;
-use Illuminate\Database\ConnectionInterface;
+use Illuminate\Database\Connection;
 use Rokde\CloneDatabase\Events\TableCreated;
 use Rokde\CloneDatabase\Events\TableDropped;
 
@@ -19,8 +19,8 @@ readonly class SynchronizeStructure
      * @throws \Doctrine\DBAL\Exception
      */
     public function __invoke(
-        ConnectionInterface $sourceConnection,
-        ConnectionInterface $targetConnection
+        Connection $sourceConnection,
+        Connection $targetConnection
     ): void {
         // prevent "Unknown database type enum requested, Doctrine\DBAL\Platforms\*Platform may not support it."
         $sourceConnection->getDoctrineConnection()

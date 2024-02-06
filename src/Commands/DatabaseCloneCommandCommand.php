@@ -3,7 +3,7 @@
 namespace Rokde\CloneDatabase\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Database\ConnectionResolverInterface;
+use Illuminate\Database\DatabaseManager;
 use Illuminate\Support\Facades\Event;
 use Rokde\CloneDatabase\Actions\CountRecords;
 use Rokde\CloneDatabase\Actions\DeleteRecords;
@@ -29,7 +29,7 @@ class DatabaseCloneCommandCommand extends Command
 
     private ?Stopwatch $stopwatch = null;
 
-    public function handle(ConnectionResolverInterface $connections): int
+    public function handle(DatabaseManager $connections): int
     {
         $this->stopwatch = Stopwatch::make();
 
