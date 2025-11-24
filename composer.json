@@ -27,16 +27,16 @@
     },
     "require-dev": {
         "doctrine/dbal": "^4.3.4",
-        "larastan/larastan": "^3.0",
+        "larastan/larastan": "^3.8",
         "laravel/pint": "^1.25.1",
-        "nunomaduro/collision": "^v8.0",
-        "orchestra/testbench": "^10.0",
-        "pestphp/pest": "^4.1",
+        "nunomaduro/collision": "^8.8.3",
+        "orchestra/testbench": "^10.7",
+        "pestphp/pest": "^4.1.4",
         "pestphp/pest-plugin-arch": "^4.0",
         "pestphp/pest-plugin-laravel": "^4.0",
         "phpstan/extension-installer": "^1.4.3",
-        "phpstan/phpstan-deprecation-rules": "^2.0",
-        "phpstan/phpstan-phpunit": "^2.0"
+        "phpstan/phpstan-deprecation-rules": "^2.0.3",
+        "phpstan/phpstan-phpunit": "^2.0.8"
     },
     "autoload": {
         "psr-4": {
